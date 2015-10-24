@@ -1,0 +1,7 @@
+{
+  "db_uri" : "mongodb://localhost/test",
+  "db_options" : {
+    "user" : "",
+    "pass" : ""
+  }
+}
