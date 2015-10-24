@@ -14,11 +14,13 @@ var PS2DB = function () {
     var database = mongoose.connection;
 };
 
-PS2DB.prototype.save = function (event) {
-    var eventDoc = new Events[event.event_name]();
+PS2DB.prototype.save = function (event, callback) {
+    var eventDoc = new Events[event.event_name](event);
     eventDoc.save(function (err, dbEvent) {
         if (err)
             return console.error(err);
+        if (callback)
+            callback(dbEvent);
     });
 };
 
