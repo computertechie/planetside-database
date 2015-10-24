@@ -15,7 +15,7 @@ var PS2DB = function () {
 };
 
 PS2DB.prototype.save = function (event) {
-    var eventDoc = new Events[event.event_type]();
+    var eventDoc = new Events[event.event_name]();
     eventDoc.save(function (err, dbEvent) {
         if (err)
             return console.error(err);
