@@ -2,7 +2,7 @@
   "name": "planetside-database",
   "version": "1.0.0",
   "description": "PlanetSide API database schemas and interface.",
-  "main": "index.js",
+  "main": "ps2db.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
