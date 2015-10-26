@@ -28,4 +28,5 @@ PS2DB.prototype.save = function (event, callback) {
     });
 };
 
-module.exports = PS2DB;
+module.exports.PS2Database = PS2DB;
+module.exports.events = Events;
