@@ -2,15 +2,19 @@
  * Created by Pepper on 10/23/2015.
  */
 
-var config = require('./config');
+var defaultConfig = require('./config/default');
+var config = require('config');
 var mongoose = require('mongoose');
 var Events = require('./lib/Events');
 
-var PS2DB = function () {
-    if (config.db_options.user)
-        mongoose.connect(config.db_uri, config.db_options);
+var PS2DB = function (options) {
+    config.util.extendDeep(defaultConfig, options);
+    config.util.setModuleDefaults('database', defaultConfig);
+
+    if (config.has('database.db_options.user') && config.get('database.db_options.user'))
+        mongoose.connect(config.get('database.db_uri'), config.get('database.db_options'));
     else
-        mongoose.connect(config.db_uri);
+        mongoose.connect(config.get('database.db_uri'));
     var database = mongoose.connection;
 };
 
@@ -24,4 +28,4 @@ PS2DB.prototype.save = function (event, callback) {
     });
 };
 
-module.exports = new PS2DB();
+module.exports = PS2DB;
