@@ -6,6 +6,7 @@ var defaultConfig = require('./config/default');
 var config = require('config');
 var mongoose = require('mongoose');
 var Events = require('./lib/Events');
+var Collections = require('./lib/Collections');
 
 var PS2DB = function (options) {
     config.util.extendDeep(defaultConfig, options);
@@ -30,3 +31,4 @@ PS2DB.prototype.save = function (event, callback) {
 
 module.exports.PS2Database = PS2DB;
 module.exports.events = Events;
+module.exports.collections = Collections;
