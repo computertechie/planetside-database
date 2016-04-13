@@ -45,4 +45,3 @@ PS2DB.prototype.save = function (event, callback) {
 
 module.exports.PS2Database = PS2DB;
 module.exports.events = Events;
-module.exports.collections = Collections;
