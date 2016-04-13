@@ -4,9 +4,23 @@
 
 var defaultConfig = require('./config/default');
 var config = require('config');
-var mongoose = require('mongoose');
-var Events = require('./lib/Events');
-var Collections = require('./lib/Collections');
+var mongoose = require('mongoose-populate-virtuals')(require('mongoose'));
+
+var Events = {
+    AchievementEarned: require('./lib/events/AchievementEarned'),
+    BattleRankUp: require('./lib/events/BattleRankUp'),
+    ContinentLock: require('./lib/events/ContinentLock'),
+    ContinentUnlock: require('./lib/events/ContinentUnlock'),
+    Death: require('./lib/events/Death'),
+    FacilityControl: require('./lib/events/FacilityControl'),
+    GainExperience: require('./lib/events/GainExperience'),
+    MetagameEvent: require('./lib/events/MetagameEvent'),
+    PlayerFacilityCapture: require('./lib/events/PlayerFacilityCapture'),
+    PlayerFacilityDefend: require('./lib/events/PlayerFacilityDefend'),
+    PlayerLogin: require('./lib/events/PlayerLogin'),
+    PlayerLogout: require('./lib/events/PlayerLogout'),
+    VehicleDestroy: require('./lib/events/VehicleDestroy')
+};
 
 var PS2DB = function (options) {
     config.util.extendDeep(defaultConfig, options);

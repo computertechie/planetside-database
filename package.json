@@ -1,6 +1,6 @@
 {
   "name": "planetside-database",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "PlanetSide API database schemas and interface.",
   "main": "ps2db.js",
   "scripts": {
@@ -22,6 +22,7 @@
   "dependencies": {
     "config": "^1.16.0",
     "mongodb": "^2.0.46",
-    "mongoose": "^4.2.2"
+    "mongoose": "^4.2.2",
+    "mongoose-populate-virtuals": "^1.0.3"
   }
 }
