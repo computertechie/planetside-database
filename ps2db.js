@@ -22,6 +22,32 @@ var Events = {
     VehicleDestroy: require('./lib/events/VehicleDestroy')
 };
 
+var CensusCollections = {
+    Character: require('./lib/census/Character'),
+    Experience: require('./lib/census/Experience'),
+    Facility: require('./lib/census/Facility'),
+    Outfit: require('./lib/census/Outfit'),
+    Weapon: require('./lib/census/Weapon')
+};
+
+var Generated = {
+    Alert: require('./lib/generated/Alert'),
+    OnlinePlayer: require('./lib/generated/OnlinePlayer'),
+    Session: require('./lib/generated/Session'),
+    CharacterStat: require('./lib/generated/CharacterStat'),
+    OutfitStat: require('./lib/generated/OutfitStat')
+};
+
+var Locals = {
+    Faction: require('./lib/local/Faction'),
+    Loadout: require('./lib/local/Loadout'),
+    MetagameEvent: require('./lib/local/MetagameEvent'),
+    MetagameEventState: require('./lib/local/MetagameEventState'),
+    Vehicle: require('./lib/local/Vehicle'),
+    World: require('./lib/local/World'),
+    Zone: require('./lib/local/Zone')
+};
+
 var PS2DB = function (options) {
     config.util.extendDeep(defaultConfig, options);
     config.util.setModuleDefaults('database', defaultConfig);
@@ -45,3 +71,4 @@ PS2DB.prototype.save = function (event, callback) {
 
 module.exports.PS2Database = PS2DB;
 module.exports.events = Events;
+module.exports.local = Locals;
