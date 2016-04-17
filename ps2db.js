@@ -22,7 +22,7 @@ var Events = {
     VehicleDestroy: require('./lib/events/VehicleDestroy')
 };
 
-var CensusCollections = {
+var Census = {
     Character: require('./lib/census/Character'),
     Experience: require('./lib/census/Experience'),
     Facility: require('./lib/census/Facility'),
@@ -72,3 +72,5 @@ PS2DB.prototype.save = function (event, callback) {
 module.exports.PS2Database = PS2DB;
 module.exports.events = Events;
 module.exports.local = Locals;
+module.exports.generated = Generated;
+module.exports.census = Census;
