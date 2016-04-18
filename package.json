@@ -23,6 +23,6 @@
     "config": "^1.16.0",
     "mongodb": "^2.0.46",
     "mongoose": "^4.2.2",
-    "mongoose-populate-virtuals": "^1.0.3"
+    "mongoose-fill": "^1.1.3"
   }
 }

@@ -4,7 +4,7 @@
 
 var defaultConfig = require('./config/default');
 var config = require('config');
-var mongoose = require('mongoose-populate-virtuals')(require('mongoose'));
+var mongoose = require('mongoose-fill');
 
 var Events = {
     AchievementEarned: require('./lib/events/AchievementEarned'),
@@ -12,6 +12,7 @@ var Events = {
     ContinentLock: require('./lib/events/ContinentLock'),
     ContinentUnlock: require('./lib/events/ContinentUnlock'),
     Death: require('./lib/events/Death'),
+    Event: require('./lib/events/Event'),
     FacilityControl: require('./lib/events/FacilityControl'),
     GainExperience: require('./lib/events/GainExperience'),
     MetagameEvent: require('./lib/events/MetagameEvent'),
@@ -23,6 +24,7 @@ var Events = {
 };
 
 var Census = {
+    Achievement: require('./lib/census/Achievement'),
     Character: require('./lib/census/Character'),
     Experience: require('./lib/census/Experience'),
     Facility: require('./lib/census/Facility'),
@@ -57,16 +59,6 @@ var PS2DB = function (options) {
     else
         mongoose.connect(config.get('database.db_uri'));
     var database = mongoose.connection;
-};
-
-PS2DB.prototype.save = function (event, callback) {
-    var eventDoc = new Events[event.event_name](event);
-    eventDoc.save(function (err, dbEvent) {
-        if (err)
-            return console.error(err);
-        if (callback)
-            callback(dbEvent);
-    });
 };
 
 module.exports.PS2Database = PS2DB;
