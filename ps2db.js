@@ -27,4 +27,4 @@ var PS2DB = function (options) {
     }
 };
 
-module.exports.PS2Database = PS2DB;
+module.exports = PS2DB;
