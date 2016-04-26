@@ -2,22 +2,27 @@
  * Created by Pepper on 10/23/2015.
  */
 
-var defaultConfig = require('./config/default');
-var config = require('config');
+var config = require('./config/default');
 var mongoose = require('mongoose-fill');
 var Collections = require('./lib/Collections');
 
 var PS2DB = function (options) {
-    config.util.extendDeep(defaultConfig, options);
-    config.util.setModuleDefaults('database', defaultConfig);
-
-    if (config.has('database.db_options.user') && config.get('database.db_options.user'))
-        mongoose.connect(config.get('database.db_uri'), config.get('database.db_options'));
+    if (options) {
+        for (option in config) {
+            if (!options[config])
+                options[config] = config[config];
+        }
+    }
     else
-        mongoose.connect(config.get('database.db_uri'));
-    
+        options = config;
+
+    if (options.db_uri && options.db_options)
+        mongoose.connect(config.db_uri, config.db_options);
+    else
+        mongoose.connect(config.db_uri);
+
     return {
-        database: mongoose.connection,
+        connection: mongoose.connection,
         collections: Collections
     }
 };
