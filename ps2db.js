@@ -17,9 +17,9 @@ var PS2DB = function (options) {
         options = config;
 
     if (options.db_uri && options.db_options)
-        mongoose.connect(config.db_uri, config.db_options);
+        mongoose.connect(options.db_uri, options.db_options);
     else
-        mongoose.connect(config.db_uri);
+        mongoose.connect(options.db_uri);
 
     return {
         connection: mongoose.connection,
