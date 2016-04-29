@@ -4,6 +4,7 @@
 
 var config = require('./config/default');
 var mongoose = require('mongoose-fill');
+mongoose.Promise = require('bluebird');
 var Collections = require('./lib/Collections');
 
 var PS2DB = function (options) {
