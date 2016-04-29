@@ -9,8 +9,8 @@ var Collections = require('./lib/Collections');
 var PS2DB = function (options) {
     if (options) {
         for (option in config) {
-            if (!options[config])
-                options[config] = config[config];
+            if (!options[option])
+                options[option] = config[option];
         }
     }
     else
